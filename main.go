@@ -44,9 +44,9 @@ func train(examples [4][2]float64, results [4]float64) ([3][2]float64, [3]float6
 			var err float64 = resultNeuron - results[example]
 			var delta float64 = err * resultNeuron * (1 - resultNeuron)
 
-			weightsOutputLayer[0] = weightsOutputLayer[0] - (lambda * delta * NeuronFirstHiddenLayer)
-			weightsOutputLayer[1] = weightsOutputLayer[1] - (lambda * delta * NeuronSecondHiddenLayer)
-			weightsOutputLayer[2] = weightsOutputLayer[2] - (lambda * delta * bias)
+			weightsOutputLayer[0] -= (lambda * delta * NeuronFirstHiddenLayer)
+			weightsOutputLayer[1] -= (lambda * delta * NeuronSecondHiddenLayer)
+			weightsOutputLayer[2] -= (lambda * delta * bias)
 
 			var deltaFirstLayer float64 = (delta * weightsOutputLayer[0]) * NeuronFirstHiddenLayer * (1 - NeuronFirstHiddenLayer)
 			var deltaSecondLayer float64 = (delta * weightsOutputLayer[1]) * NeuronSecondHiddenLayer * (1 - NeuronSecondHiddenLayer)
